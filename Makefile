@@ -1,41 +1,31 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: yoandria <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/04/13 15:13:59 by yoandria          #+#    #+#              #
-#    Updated: 2026/04/13 15:56:22 by yoandria         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libftprintf.a
-
 CC = cc
-CCFLAGS = -Wall -Wextra -Werror
-ARNAME = ar rcs $(NAME)
+CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c
+SRCS = ft_printf.c \
+       ft_print_char.c \
+       ft_print_str.c \
+       ft_print_ptr.c \
+       ft_print_nbr.c \
+       ft_print_unbr.c \
+       ft_print_hex.c
 
-OBJ := $(SRC:%.c=%.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	make -C libft
-	cp libft/libft.a $(NAME)
-	$(ARNAME) $(OBJ)
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) -c $(CCFLAGS) $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	make clean -C libft
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 
 fclean: clean
-	make fclean -C libft
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
