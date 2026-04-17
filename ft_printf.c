@@ -6,7 +6,7 @@
 /*   By: yoandria <yoandria@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 10:13:29 by yoandria          #+#    #+#             */
-/*   Updated: 2026/04/16 10:13:30 by yoandria         ###   ########.fr       */
+/*   Updated: 2026/04/17 20:33:24 by yoandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	int		print_length;
 
+	if (!format)
+		return (-1);
 	i = 0;
 	print_length = 0;
 	va_start(args, format);
