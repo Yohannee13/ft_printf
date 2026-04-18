@@ -6,7 +6,7 @@
 /*   By: yoandria <yoandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 10:13:29 by yoandria          #+#    #+#             */
-/*   Updated: 2026/04/18 03:56:43 by yoandria         ###   ########.fr       */
+/*   Updated: 2026/04/18 03:58:30 by yoandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i++
+			i++;
 			if (format[i] == '\0')
 				break ;
 			print_length += ft_formats(args, format[i]);
