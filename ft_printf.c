@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoandria <yoandria@student.42antananari    +#+  +:+       +#+        */
+/*   By: yoandria <yoandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 10:13:29 by yoandria          #+#    #+#             */
-/*   Updated: 2026/04/17 20:33:24 by yoandria         ###   ########.fr       */
+/*   Updated: 2026/04/18 03:56:43 by yoandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '\0')
+			i++
+			if (format[i] == '\0')
 				break ;
-			print_length += ft_formats(args, format[i + 1]);
-			i++;
+			print_length += ft_formats(args, format[i]);
 		}
 		else
 			print_length += ft_print_char(format[i]);

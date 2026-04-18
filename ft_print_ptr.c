@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoandria <yoandria@student.42antananari    +#+  +:+       +#+        */
+/*   By: yoandria <yoandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 10:13:14 by yoandria          #+#    #+#             */
-/*   Updated: 2026/04/16 10:13:15 by yoandria         ###   ########.fr       */
+/*   Updated: 2026/04/18 03:54:45 by yoandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ int	ft_print_ptr(unsigned long long ptr)
 	if (ptr == 0)
 		return (ft_print_str("(nil)"));
 	print_length += ft_print_str("0x");
-	if (ptr != 0)
-	{
-		ft_put_ptr(ptr);
-		print_length += ft_ptr_len(ptr);
-	}
+	ft_put_ptr(ptr);
+	print_length += ft_ptr_len(ptr);
 	return (print_length);
 }
