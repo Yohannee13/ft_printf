@@ -6,7 +6,7 @@
 #    By: yoandria <yoandria@student.42antananari    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/16 10:14:10 by yoandria          #+#    #+#              #
-#    Updated: 2026/04/16 10:14:11 by yoandria         ###   ########.fr        #
+#    Updated: 2026/04/24 02:14:05 by yoandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,4 +40,12 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test: $(NAME)
+	@if [ -f main.c ]; then \
+		$(CC) $(CFLAGS) main.c -L. -lftprintf -o test_printf; \
+		echo "Compilation successful. Run './test_printf'"; \
+	else \
+		echo "Error: Please create a main.c to test."; \
+	fi
+
+.PHONY: all clean fclean re test

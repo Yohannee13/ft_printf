@@ -42,3 +42,65 @@ A dynamic **dispatcher pattern coupled with direct System File Descriptors IO wr
 ### Use of AI
 Ai was used to review code and file structure in order to ensure that the code was clean and efficient.
 It was also used to help on the debugging side by spotting critical areas in the code where errors could happened and suggest better ways to handle them.
+
+## Testing
+
+To verify the correct behavior of the library, you can use the provided test script in the `Makefile`. 
+
+### 1. Create a `main.c`
+Create a file named `main.c` at the root of the repository with the following code:
+
+```c
+#include "ft_printf.h"
+#include <stdio.h>
+#include <limits.h>
+
+int main(void)
+{
+    int len;
+    int len_std;
+
+    printf("--- Mandatory Specifiers ---\n");
+
+    // Char & String
+    len = ft_printf("Char: [%c] | String: [%s]\n", 'Z', "42 Antananarivo");
+    len_std = printf("Std : [%c] | String: [%s]\n", 'Z', "42 Antananarivo");
+    printf("Return values -> ft: %d | std: %d\n\n", len, len_std);
+
+    // Integers
+    len = ft_printf("Max Int: [%d] | Min Int: [%i]\n", INT_MAX, INT_MIN);
+    len_std = printf("Std    : [%d] | Min Int: [%i]\n", INT_MAX, INT_MIN);
+    printf("Return values -> ft: %d | std: %d\n\n", len, len_std);
+
+    // Pointers & Hex
+    len = ft_printf("Ptr: [%p] | Hex: [%x] [%X]\n", &len, 255, 255);
+    len_std = printf("Std: [%p] | Hex: [%x] [%X]\n", &len, 255, 255);
+    printf("Return values -> ft: %d | std: %d\n\n", len, len_std);
+
+    // Edge cases: NULL pointer
+    len = ft_printf("Ptr: [%p] | Hex: [%x] [%X]\n", NULL, 255, 255);
+    len_std = printf("Std: [%p] | Hex: [%x] [%X]\n", NULL, 255, 255);
+    printf("Return values -> ft: %d | std: %d\n\n", len, len_std);
+
+    return (0);
+}
+```
+
+### 2. Run the tests
+Execute the following commands in your terminal:
+
+```bash
+# Compile the library and the test program
+make test
+
+# Run the executable
+./test_printf
+```
+
+The `make test` rule handles the compilation of your `main.c` and links it automatically with `libftprintf.a`.
+
+### 3. Cleanup
+To remove the test executable and object files:
+```bash
+make fclean
+```
